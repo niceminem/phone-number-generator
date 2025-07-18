@@ -1,3 +1,4 @@
+
 // Phone Number Generator - Main JavaScript
 
 // Analytics tracking for button clicks
