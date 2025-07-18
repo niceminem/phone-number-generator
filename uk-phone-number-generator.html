@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free UK phone number generator. Generate valid British phone numbers for London, Manchester, Birmingham and other cities. Supports mobile and landline formats.">
+    <meta name="keywords" content="UK phone number generator, British phone number, fake UK number, random UK phone, London phone number, Manchester phone number">
+    <meta name="author" content="Phone Number Generator">
+    <meta property="og:title" content="UK Phone Number Generator - Generate British Phone Numbers">
+    <meta property="og:description" content="Generate valid UK phone numbers for all major cities. Free tool supporting mobile and landline formats.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/uk-phone-number-generator">
+    <title>UK Phone Number Generator - Generate British Phone Numbers</title>
+    
+    <link rel="stylesheet" href="css/generator.css">
+    <style>
+        .language-selector { position: absolute; top: 20px; right: 20px; z-index: 1000; }
+        .language-select { background: rgba(255, 255, 255, 0.9); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 8px 12px; font-size: 0.9rem; color: #333; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); min-width: 150px; }
+        .language-select:hover { background: rgba(255, 255, 255, 1); border-color: rgba(255, 255, 255, 0.8); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+        header { position: relative; }
+        [dir="rtl"] .language-selector { right: auto; left: 20px; }
+        @media (max-width: 768px) { .language-selector { position: static; text-align: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <!-- Hidden country code for JavaScript -->
+    <span id="countryCode" style="display: none;">uk</span>
+    
+    <header>
+        <div class="container">
+            <div class="language-selector">
+                <select id="languageSelector" class="language-select">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh">🇨🇳 中文</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="hi">🇮🇳 हिन्दी</option>
+                    <option value="ar">🇸🇦 العربية</option>
+                </select>
+            </div>
+            <a href="index.html" class="back-home" data-i18n="backToHome">← Back to All Generators</a>
+            <h1><span class="flag">🇬🇧</span><span data-i18n="ukPhoneGenerator">UK Phone Number Generator</span></h1>
+            <p class="page-description" data-i18n="ukDescription">Generate UK phone numbers including London, Manchester, Birmingham and other major cities. Supports both mobile and landline formats.</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Generator Section -->
+        <section class="generator-section">
+            <h2 class="generator-title" data-i18n="generatePhoneNumbers">Generate UK Phone Numbers</h2>
+            <div class="generator-controls">
+                <div class="control-group">
+                    <label for="numberType" data-i18n="numberType">Number Type:</label>
+                    <select id="numberType" class="control-select">
+                        <option value="all" data-i18n="mobileAndLandline">Mobile & Landline</option>
+                        <option value="mobile" data-i18n="mobileOnly">Mobile Only</option>
+                        <option value="landline" data-i18n="landlineOnly">Landline Only</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="region" data-i18n="stateRegion">Region:</label>
+                    <select id="region" class="control-select">
+                        <option value="all" data-i18n="allRegions">All Regions</option>
+                        <option value="london">London</option>
+                        <option value="manchester">Manchester</option>
+                        <option value="birmingham">Birmingham</option>
+                        <option value="glasgow">Glasgow</option>
+                        <option value="liverpool">Liverpool</option>
+                        <option value="edinburgh">Edinburgh</option>
+                        <option value="leeds">Leeds</option>
+                        <option value="bristol">Bristol</option>
+                        <option value="cardiff">Cardiff</option>
+                        <option value="belfast">Belfast</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="numberFormat" data-i18n="numberFormat">Number Format:</label>
+                    <select id="numberFormat" class="control-select">
+                        <option value="random" data-i18n="randomFormat">Random Format</option>
+                        <option value="standard">020 1234 5678</option>
+                        <option value="mobile">07123 456789</option>
+                        <option value="spaced">020 1234 5678</option>
+                        <option value="plain">02012345678</option>
+                    </select>
+                </div>
+                
+                <button id="generateBtn" class="generate-btn" data-i18n="generateButton">Generate Phone Number</button>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section class="results-section">
+            <div class="results-header">
+                <h3 data-i18n="generatedPhoneNumbers">Generated Phone Numbers</h3>
+                <div class="results-count">
+                    <span id="numbersCount">0</span> <span id="numbersLabel" data-i18n="numbersGenerated">numbers generated</span>
+                </div>
+                <button id="clearBtn" class="clear-btn" data-i18n="clearAllNumbers">Clear All Numbers</button>
+            </div>
+            
+            <div id="phoneNumbersList" class="phone-numbers-list">
+                <div class="no-numbers" data-i18n="noNumbersYet">No phone numbers generated yet. Click the button above to start.</div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section class="about-section">
+            <h2 data-i18n="aboutUKNumbers">About UK Phone Numbers</h2>
+            <div class="about-content">
+                <p>UK phone numbers follow specific formatting rules with different prefixes for landlines, mobiles, and special services. The UK uses a variable-length numbering system.</p>
+                <p>Key features of UK phone numbers:</p>
+                <ul>
+                    <li><strong>Landline Numbers:</strong> Begin with 01 or 02 (geographic numbers)</li>
+                    <li><strong>Mobile Numbers:</strong> Begin with 07 followed by 9 digits</li>
+                    <li><strong>Freephone Numbers:</strong> Begin with 0800 or 0808</li>
+                    <li><strong>Premium Rate:</strong> Begin with 09 (premium rate services)</li>
+                    <li><strong>Business Rate:</strong> Begin with 0845 or 0870</li>
+                </ul>
+                <div class="usage-note">
+                    <h3 data-i18n="usageNote">Usage Note</h3>
+                    <p data-i18n="usageDescription">These generated numbers are for testing and development purposes only. They should not be used for actual communication attempts.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 <span data-i18n="phoneNumberGenerator">Phone Number Generator</span>. <span data-i18n="allRightsReserved">All rights reserved.</span> | <span data-i18n="privacyPolicy">Privacy Policy</span> | <span data-i18n="termsOfService">Terms of Service</span></p>
+        </div>
+    </footer>
+    
+    
+    <script src="js/i18n.js"></script>
+    <script src="js/phone-generator.js"></script>
+</body>
+</html>

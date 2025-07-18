@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free China phone number generator. Generate valid Chinese mobile and landline phone numbers for testing and development. Supports China Mobile, China Unicom, and China Telecom.">
+    <meta name="keywords" content="China phone number generator, Chinese phone number, 中国手机号码生成器, mobile number generator, China Mobile, China Unicom, China Telecom">
+    <meta name="author" content="Phone Number Generator">
+    <meta property="og:title" content="China Phone Number Generator - Generate Chinese Phone Numbers">
+    <meta property="og:description" content="Generate valid Chinese mobile and landline phone numbers. Free tool supporting all major carriers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/china-phone-number-generator">
+    <title>China Phone Number Generator - Generate Chinese Phone Numbers</title>
+    
+    <link rel="stylesheet" href="css/generator.css">
+    <style>
+        .language-selector { position: fixed; top: 20px; right: 20px; z-index: 1000; background: #ff0000; padding: 5px; border-radius: 5px; border: 2px solid #000; }
+        .language-select { background: white; border: 2px solid #333; border-radius: 8px; padding: 8px 12px; font-size: 0.9rem; color: #333; cursor: pointer; min-width: 150px; font-weight: bold; }
+        .language-select:hover { background: #f0f0f0; }
+        header { position: relative; }
+        [dir="rtl"] .language-selector { right: auto; left: 20px; }
+        @media (max-width: 768px) { .language-selector { position: static; text-align: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <!-- Hidden country code for JavaScript -->
+    <span id="countryCode" style="display: none;">china</span>
+    
+    <header>
+        <div class="container">
+            <div class="language-selector">
+                <select id="languageSelector" class="language-select">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh">🇨🇳 中文</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="hi">🇮🇳 हिन्दी</option>
+                    <option value="ar">🇸🇦 العربية</option>
+                </select>
+            </div>
+            <a href="index.html" class="back-home" data-i18n="backToHome">← Back to All Generators</a>
+            <h1><span class="flag">🇨🇳</span><span data-i18n="chinaPhoneGenerator">China Phone Number Generator</span></h1>
+            <p class="page-description" data-i18n="chinaDescription">Generate authentic Chinese mobile and landline phone numbers. Supports all major carriers including China Mobile (中国移动), China Unicom (中国联通), and China Telecom (中国电信).</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Generator Section -->
+        <section class="generator-section">
+            <h2 class="generator-title" data-i18n="generatePhoneNumbers">Generate China Phone Numbers</h2>
+            <div class="generator-controls">
+                <div class="control-group">
+                    <label for="numberType" data-i18n="numberType">Number Type:</label>
+                    <select id="numberType" class="control-select">
+                        <option value="all" data-i18n="mobileAndLandline">Mobile & Landline</option>
+                        <option value="mobile" data-i18n="mobileOnly">Mobile Only</option>
+                        <option value="landline" data-i18n="landlineOnly">Landline Only</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="carrier" data-i18n="carrier">Carrier:</label>
+                    <select id="carrier" class="control-select">
+                        <option value="all" data-i18n="allCarriers">All Carriers</option>
+                        <option value="china-mobile">China Mobile (中国移动)</option>
+                        <option value="china-unicom">China Unicom (中国联通)</option>
+                        <option value="china-telecom">China Telecom (中国电信)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="numberFormat" data-i18n="numberFormat">Number Format:</label>
+                    <select id="numberFormat" class="control-select">
+                        <option value="random" data-i18n="randomFormat">Random Format</option>
+                        <option value="simple">138 1234 5678</option>
+                        <option value="dashed">138-1234-5678</option>
+                        <option value="spaced">138 1234 5678</option>
+                        <option value="plain">13812345678</option>
+                    </select>
+                </div>
+                
+                <button id="generateBtn" class="generate-btn" data-i18n="generateButton">Generate Phone Number</button>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section class="results-section">
+            <div class="results-header">
+                <h3 data-i18n="generatedPhoneNumbers">Generated Phone Numbers</h3>
+                <div class="results-count">
+                    <span id="numbersCount">0</span> <span id="numbersLabel" data-i18n="numbersGenerated">numbers generated</span>
+                </div>
+                <button id="clearBtn" class="clear-btn" data-i18n="clearAllNumbers">Clear All Numbers</button>
+            </div>
+            
+            <div id="phoneNumbersList" class="phone-numbers-list">
+                <div class="no-numbers" data-i18n="noNumbersYet">No phone numbers generated yet. Click the button above to start.</div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section class="about-section">
+            <h2 data-i18n="aboutChinaNumbers">About Chinese Phone Numbers</h2>
+            <div class="about-content">
+                <p>Chinese phone numbers follow a standardized format with mobile numbers typically starting with 13, 14, 15, 16, 17, 18, or 19, followed by 9 additional digits. Landline numbers vary by region with area codes ranging from 2 to 4 digits.</p>
+                <p>The major carriers in China are:</p>
+                <ul>
+                    <li><strong>China Mobile (中国移动)</strong> - Largest carrier with prefixes like 134, 135, 136, 137, 138, 139, 147, 150, 151, 152, 157, 158, 159, 182, 183, 184, 187, 188, 178, 198</li>
+                    <li><strong>China Unicom (中国联通)</strong> - Second largest with prefixes like 130, 131, 132, 145, 155, 156, 166, 175, 176, 185, 186, 196</li>
+                    <li><strong>China Telecom (中国电信)</strong> - Third largest with prefixes like 133, 153, 173, 177, 180, 181, 189, 199</li>
+                </ul>
+                <div class="usage-note">
+                    <h3 data-i18n="usageNote">Usage Note</h3>
+                    <p data-i18n="usageDescription">These generated numbers are for testing and development purposes only. They should not be used for actual communication attempts.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 <span data-i18n="phoneNumberGenerator">Phone Number Generator</span>. <span data-i18n="allRightsReserved">All rights reserved.</span> | <span data-i18n="privacyPolicy">Privacy Policy</span> | <span data-i18n="termsOfService">Terms of Service</span></p>
+        </div>
+    </footer>
+    
+    
+    <script src="js/i18n.js"></script>
+    <script src="js/phone-generator.js"></script>
+</body>
+</html>
